@@ -25,18 +25,15 @@ def index():
     html_text = html_text.replace("saya_date",saya_date)
     return html_text
 
-@route('/bankbook')
+@route('/bankbook', method='post')
 def index():
     ### form 데이터 가져오기
     date = request.forms.get('date')
     FD=request.forms
-    for i in FD:
-        print(i,":",FD[i])
     io = request.forms.get('i/o')
     tmp = request.forms.get('price')
     content = request.forms.get('content')
-    print("content 출력:",content)
-    print("content type:",type(content))
+    content = content.encode('latin1').decode('utf-8')
     income=""
     outcome=""
     if(io=='income'):
@@ -57,7 +54,9 @@ def index():
         ('%s', '%s', '%s',"""+outcome+");"
 
     Type = request.forms.get('type')
+    Type = Type.encode('latin1').decode('utf-8')
     table = request.forms.get('TBtype')
+    table = table.encode('latin1').decode('utf-8')
 
     ### db control
     db = pymysql.connect(host="localhost",
