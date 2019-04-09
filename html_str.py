@@ -129,3 +129,16 @@ def make_str():
     </html> 
     """
     return (text) 
+
+def make_str_back():
+    str = """
+    <!DOCTYPE html>
+    <html>
+    <head>
+    </head>
+    <body>
+        <input type="button" value="뒤로가기" onclick="history.back(-1);">
+    </body>
+    </html>
+"""
+    return str

@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 from bottle import route, run, request
-from html_str import make_str
+from html_str import make_str,make_str_back
 from feedparser import parse
 import pymysql
 from urllib.parse import unquote
@@ -67,6 +67,7 @@ def index():
     cursor.execute(string%(table,date,content,Type))
     db.commit()
 
-    return 'test'
+    back_str = make_str_back()
+    return back_str
 
 run(host='0.0.0.0', port=8080)
